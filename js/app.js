@@ -14,10 +14,12 @@ const APP = {
   },
   saveMovie: (ev) => {
     ev.preventDefault();
-    let movie = {};
     let title = document.getElementById('title').value.trim();
     if (!title) return;
-    movie.title = title;
+    let movie = {
+      id: Math.random().toString(36).substring(2),
+      title: title,
+    };
     //check for the other two values too
     //add the other two values to the movie object
     APP.addMovie(movie);
@@ -29,7 +31,7 @@ const APP = {
     //retrieve the list of movies from the database
     //call APP.displayMovies when transaction complete
   },
-  displayMovies: () => {
+  displayMovies: (movies) => {
     //called when DB is opened successfully
     //also called from APP.getMovies
   },
